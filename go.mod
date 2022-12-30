@@ -1,4 +1,4 @@
-module tritan.dev/v
+module tritan.dev
 
 go 1.19
 

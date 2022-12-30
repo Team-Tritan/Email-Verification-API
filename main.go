@@ -2,23 +2,20 @@ package main
 
 import (
 	"log"
-	router "tritan.dev/v/router"
+
 	"github.com/gofiber/fiber"
+	router "tritan.dev/router"
 )
 
 
 func main() { 
   app := fiber.New()  
 
-  router_err := router.mainRouter(app) // WHY
-  
-  if router_err != nil{
-	log.Fatalf("Error: %v", router_err)
-  } 
+  err := router.ServeRoutes(app)   
 
-  listen_err := app.Listen(":3000") 
+  app.Listen(":3000") 
 
-  if listen_err != nil{
-	log.Fatalf("Error: %v", router_err)
+  if err != nil {
+	log.Fatalf("Error: %v", err)
   } 
 }
