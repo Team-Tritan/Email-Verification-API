@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber"
-	router "tritan.dev/router"
+	router "tritan.dev/Router"
 )
 
 

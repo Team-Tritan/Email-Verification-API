@@ -3,7 +3,7 @@ package router
 import (
 	"github.com/gofiber/fiber"
 
-	controllers "tritan.dev/controllers"
+	controllers "tritan.dev/Controllers"
 )
 
 
