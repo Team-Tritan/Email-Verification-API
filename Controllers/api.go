@@ -2,10 +2,10 @@ package controllers
 
 import "github.com/gofiber/fiber"
 
-func VerifyEmail(app *fiber.Ctx){
-
+func VerifyEmail(ctx *fiber.Ctx){
+	ctx.Send("uwu")
 }
 
-func CheckStatus(app *fiber.Ctx){
-	
+func CheckStatus(ctx *fiber.Ctx){	
+    ctx.Send("uwu")
 }
