@@ -3,29 +3,18 @@ package router
 import (
 	"github.com/gofiber/fiber"
 
-	controllers "tritan.dev/Controllers"
+	Controllers "tritan.dev/Controllers"
 )
 
 
-func Build_Root(app *fiber.App) error {
-	app.Get("/", func(ctx *fiber.Ctx) {
-		ctx.JSON(fiber.Map{
-			"error": false,
-			"code": 200,
-			"hi": "fuck off :)",
-		})
-	})
+func BuildAPI(app *fiber.App) error {
+	app.Get("/", Controllers.ServeRoot)
 
-	return nil
-}
-
-func Build_API(app *fiber.App) error {
 	api := app.Group("/api")
+	api.Post("/verify", Controllers.VerifyEmail)
+	api.Post("/check", Controllers.CheckStatus)
 
-	api.Post("/send", controllers.VerifyEmail)
-	api.Post("/check", controllers.CheckStatus)
-
-	app.Get("/api/status", func(ctx *fiber.Ctx) {
+	api.Get("/status", func(ctx *fiber.Ctx) {
 		ctx.JSON(fiber.Map{
 			"error": false,
 			"code": 200,
@@ -37,9 +26,8 @@ func Build_API(app *fiber.App) error {
 }
 
 
-func ServeRoutes(app *fiber.App) error { 
-	Build_Root(app)
-	Build_API(app)
+func HandleRoutes(app *fiber.App) error { 
+	BuildAPI(app)
 
 	return nil
 }

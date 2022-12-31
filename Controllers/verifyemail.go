@@ -6,6 +6,3 @@ func VerifyEmail(ctx *fiber.Ctx){
 	ctx.Send("uwu")
 }
 
-func CheckStatus(ctx *fiber.Ctx){	
-    ctx.Send("uwu")
-}

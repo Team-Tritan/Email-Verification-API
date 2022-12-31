@@ -11,7 +11,7 @@ import (
 func main() { 
   app := fiber.New()  
 
-  err := router.ServeRoutes(app)   
+  err := router.HandleRoutes(app)   
 
   app.Listen(":3000") 
 
