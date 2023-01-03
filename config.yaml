@@ -1,3 +1,10 @@
 auth_keys:
   - fuckurmom
   - fuckurdad
+mail:
+  from_address: email-verification@tritan.dev
+  mail_server: mail.webmailapp.net
+  username: email-verification@tritan.dev
+  password: mdjsnafokrnfin4830295!
+  port: 26
+  tls: false
