@@ -1,0 +1,10 @@
+auth_keys:
+  - key1
+  - key2
+mail:
+  from_address: email@site.tld
+  mail_server: mail.server.net
+  username: username@site.tld
+  password: AAAAAAAAAAAAAAAAAA
+  port: 465
+  tls: false
