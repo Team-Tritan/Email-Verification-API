@@ -25,7 +25,7 @@ func VerifyEmail(ctx *fiber.Ctx) {
 
 	auth_keys := config["auth_keys"]
 	isAuth := false
-	for _, item := range auth_keys {
+	for _, item := range auth_keys { // how do I loop through specific array in yaml instead of entire thing to match api key? essentially an .indludes()
 		if item == user_auth {
 			isAuth = true
 			break
