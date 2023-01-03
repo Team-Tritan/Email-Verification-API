@@ -1,0 +1,9 @@
+[
+  { "email": "dylan@suhd00d.com" },
+  { "verified": false },
+  { "verif_code": null },
+
+  { "email": "dylan@suhd00d.co" },
+  { "verified": false },
+  { "verif_code": null }
+]

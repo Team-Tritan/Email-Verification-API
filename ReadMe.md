@@ -1,18 +1,27 @@
-# *WIP, not finished.*
+# _WIP, not finished._
 
 # Email Verification Service
+
 A very **very** basic email verif microservice made for a friend's very specific purpose. The motivation behind making this was to better my own skills with Go. I've always handled email verification either in the frontend or the registration workflow so it's an interesting take on handling it differently, independantly. You can also use this service with any frontend, it simply will return if the user has verified their email or not upon checking.
 
 ### API Routes:
 
 #### Base URL
+
 - GET / - What do you expect? It's an api landing page
 
 #### Send Verification Request
+
 - GET /api/verify/[email]?token=[auth token]
 
 #### Get Verification Status
+
 - GET /api/check/[email]?token=[auth token]
 
 #### Get API Status
+
 - GET /api/status
+
+### UI
+
+- ![email](https://i.imgur.com/KwGKnad.png)

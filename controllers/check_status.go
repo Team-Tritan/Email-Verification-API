@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/gofiber/fiber/v2"
+	
 	"tritan.dev/config"
 )
 
@@ -12,7 +13,7 @@ func CheckStatus(ctx *fiber.Ctx) error {
 
 	auth_keys := config.Authkeys
 	isAuth := false
-	for _, item := range auth_keys { // how do I loop through specific array in yaml instead of entire thing to match api key? essentially an .indludes()
+	for _, item := range auth_keys { 
 		if item == user_auth {
 			isAuth = true
 			break

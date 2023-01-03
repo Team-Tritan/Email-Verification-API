@@ -6,7 +6,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"gopkg.in/mail.v2"
 
-	config "tritan.dev/config"
+	"tritan.dev/config"
+	"tritan.dev/database"
 )
 
 func SendMail(address string, ctx *fiber.Ctx) {
@@ -30,4 +31,10 @@ func SendMail(address string, ctx *fiber.Ctx) {
 			"email":   address,
 		})
 	}
+
+	db := database.New()
+	db.Set("email", address)
+	db.Set("verified", false)
+	db.Set("verif_code", nil)
+	db.Save("./database/users.json")
 }
