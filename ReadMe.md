@@ -22,6 +22,6 @@ A very **very** basic email verif microservice made for a friend's very specific
 
 - GET /api/status
 
-### UI
+### UI Images:
 
 - ![email](https://i.imgur.com/KwGKnad.png)
