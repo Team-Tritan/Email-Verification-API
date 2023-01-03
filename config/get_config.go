@@ -21,9 +21,9 @@ type AppConfig struct {
 	} `yaml:"mail"`
 }
 
-func (config *AppConfig) LoadConfig(app *fiber.App) error {
+func (config *AppConfig) LoadConfig(app *fiber.App) {
 
-	app.Use(func(ctx *fiber.Ctx) {
+	app.Use(func(ctx *fiber.Ctx) error {
 		config_file, config_err := ioutil.ReadFile("config.yaml")
 
 		if config_err != nil {
@@ -36,7 +36,8 @@ func (config *AppConfig) LoadConfig(app *fiber.App) error {
 		}
 
 		ctx.Locals("config", config)
+
+		return ctx.Next()
 	})
 
-	return nil
 }

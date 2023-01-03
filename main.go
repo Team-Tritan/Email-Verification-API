@@ -17,11 +17,7 @@ func main() {
 	app := fiber.New()
 
 	appConfig := config.AppConfig{}
-	conf_err := appConfig.LoadConfig(app)
-
-	if conf_err != nil {
-		log.Fatalf("Config Error: %v", conf_err)
-	}
+	appConfig.LoadConfig(app)
 
 	env_err := godotenv.Load()
 	if env_err != nil {

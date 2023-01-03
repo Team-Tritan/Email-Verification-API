@@ -27,7 +27,7 @@ func VerifyEmail(ctx *fiber.Ctx) error {
 			"message": "You are not authenticated.",
 		})
 	} else {
-		go mail.SendMail(email, ctx)
+		mail.SendMail(email, ctx)
 
 		return ctx.JSON(fiber.Map{
 			"error":   false,

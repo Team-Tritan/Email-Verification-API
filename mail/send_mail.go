@@ -1,6 +1,8 @@
 package mail
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber/v2"
 	"gopkg.in/mail.v2"
 
@@ -20,6 +22,6 @@ func SendMail(address string, ctx *fiber.Ctx) {
 	d.StartTLSPolicy = mail.MandatoryStartTLS
 
 	if err := d.DialAndSend(m); err != nil {
-		panic(err)
+		fmt.Printf("%v", err)
 	}
 }

@@ -6,5 +6,5 @@ mail:
   mail_server: mail.webmailapp.net
   username: email-verification@tritan.dev
   password: mdjsnafokrnfin4830295!
-  port: 26
+  port: 465
   tls: false
