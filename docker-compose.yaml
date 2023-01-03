@@ -1,18 +1,5 @@
 version: "3.2"
 services:
-  redis:
-    image: "redis:alpine"
-    command: redis-server --requirepass suckmycock
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis-data:/var/lib/redis
-      - redis-data/redis.conf:/usr/local/etc/redis/redis.conf
-    environment:
-      - REDIS_REPLICATION_MODE=master
-    networks:
-      node_net:
-        ipv4_address: 69.69.0.1
   api:
     build:
       context: .
@@ -21,7 +8,7 @@ services:
       - "3000:3000"
     networks:
       node_net:
-        ipv4_address: 69.69.0.2
+        ipv4_address: 69.69.0.69
 networks:
   node_net:
     ipam:
