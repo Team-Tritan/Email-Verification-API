@@ -3,15 +3,15 @@ package router
 import (
 	"github.com/gofiber/fiber/v2"
 
-	Controllers "tritan.dev/Controllers"
+	"tritan.dev/controllers"
 )
 
 func BuildAPI(app *fiber.App) error {
-	app.Get("/", Controllers.ServeRoot)
+	app.Get("/", controllers.ServeRoot)
 
 	api := app.Group("/api")
-	api.All("/verify/:email", Controllers.VerifyEmail)
-	api.All("/check/:email", Controllers.CheckStatus)
+	api.All("/verify/:email", controllers.VerifyEmail)
+	api.All("/check/:email", controllers.CheckStatus)
 
 	api.Get("/status", func(ctx *fiber.Ctx) error {
 		return ctx.JSON(fiber.Map{
