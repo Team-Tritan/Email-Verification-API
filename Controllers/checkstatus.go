@@ -12,7 +12,7 @@ type Query struct {
 	email string `query:"email"`
 }
 type Config struct {
-	auth_keys []string `yaml:"auth_keys"`
+	auth_keys [] `yaml:"auth_keys"`
 }
 
 func CheckStatus(ctx *fiber.Ctx) {
