@@ -12,11 +12,11 @@ A very **very** basic email verif microservice made for a friend's very specific
 
 #### Send Verification Request
 
-- GET /api/verify/[email]?token=[auth token]
+- GET /api/verify/[email]?token=[api key]
 
 #### Get Verification Status
 
-- GET /api/check/[email]?token=[auth token]
+- GET /api/check/[email]?token=[api key]
 
 #### Get API Status
 
@@ -24,4 +24,4 @@ A very **very** basic email verif microservice made for a friend's very specific
 
 ### UI Images:
 
-- ![email](https://i.imgur.com/KwGKnad.png)
+![email](https://i.imgur.com/KwGKnad.png)
