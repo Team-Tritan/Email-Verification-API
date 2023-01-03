@@ -8,12 +8,20 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 
-	router "tritan.dev/Router"
+	"tritan.dev/config"
+	"tritan.dev/router"
 )
 
 func main() {
 	fmt.Println("Starting!")
 	app := fiber.New()
+
+	appConfig := config.AppConfig{}
+	conf_err := appConfig.LoadConfig(app)
+
+	if conf_err != nil {
+		log.Fatalf("Config Error: %v", conf_err)
+	}
 
 	env_err := godotenv.Load()
 	if env_err != nil {
