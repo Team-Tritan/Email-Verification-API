@@ -1,27 +1,14 @@
 package controllers
 
 import (
-	"io/ioutil"
-	"log"
-
 	"github.com/gofiber/fiber/v2"
-	"gopkg.in/yaml.v3"
+	"tritan.dev/config"
 )
 
 func CheckStatus(ctx *fiber.Ctx) error {
 	email := ctx.Params("email")
 	user_auth := ctx.Query("token")
-	config_file, config_err := ioutil.ReadFile("config.yaml")
-
-	if config_err != nil {
-		log.Fatalf("Config Error: %v", config_err)
-	}
-
-	config := &AppConfig{}
-	parsing_err := yaml.Unmarshal(config_file, &config)
-	if parsing_err != nil {
-		log.Fatalf("Config Parsing Error: %v", parsing_err)
-	}
+	config := ctx.Locals("config").(*config.AppConfig)
 
 	auth_keys := config.Authkeys
 	isAuth := false
