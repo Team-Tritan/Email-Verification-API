@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 
-	"github.com/gofiber/fiber"
-	"gopkg.in/yaml.v3"
+	"github.com/gofiber/fiber/v2"
+	"github.com/joho/godotenv"
 
 	router "tritan.dev/Router"
 )
@@ -14,29 +14,20 @@ import (
 func main() {
 	fmt.Println("Starting!")
 	app := fiber.New()
-	config_file, config_err := ioutil.ReadFile("config.yaml")
 
-	if config_err != nil {
-		log.Fatalf("Config Error: %v", config_err)
+	env_err := godotenv.Load()
+	if env_err != nil {
+		log.Fatalf("ENV Error: %v", env_err)
 	}
 
-	config := make(map[interface{}]interface{})
-	parsing_err := yaml.Unmarshal(config_file, &config)
-	if parsing_err != nil {
-		log.Fatalf("Config Parsing Error: %v", parsing_err)
-	}
-
-	fmt.Println("Loading config...")
-	for k, v := range config {
-		fmt.Printf("%s -> %d\n", k, v)
-	}
+	port := os.Getenv("PORT")
 
 	router_err := router.HandleRoutes(app)
 	if router_err != nil {
 		log.Fatalf("Router Error: %v", router_err)
 	}
 
-	listen_err := app.Listen(config["port"])
+	listen_err := app.Listen(port)
 	if listen_err != nil {
 		log.Fatalf("Listening Error: %v", listen_err)
 	}
