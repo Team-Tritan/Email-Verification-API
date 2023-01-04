@@ -1,9 +1,13 @@
 package controllers
 
 import (
+	"time"
+
 	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 
 	"tritan.dev/config"
+	"tritan.dev/database"
 	"tritan.dev/mail"
 )
 
@@ -28,13 +32,25 @@ func VerifyEmail(ctx *fiber.Ctx) error {
 			"message": "You are not authenticated.",
 		})
 	} else {
-		mail.SendMail(email, ctx)
+		go mail.SendMail(email, ctx)
+
+		date := time.Now()
+		userkey := uuid.New().String()
+
+		db := database.New("./database/users.json")
+		db.Set(userkey, map[string]interface{}{
+			"email":      email,
+			"verified":   false,
+			"date_sent":  date.String(),
+			"verif_code": userkey,
+		})
+		db.Save("./database/users.json")
 
 		return ctx.JSON(fiber.Map{
-			"error":   false,
 			"status":  200,
 			"message": "Verification email sent successfully.",
-			"address": email,
+			"email":   email,
+			"id":      userkey,
 		})
 	}
 }

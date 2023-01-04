@@ -2,18 +2,19 @@ package controllers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	
+
 	"tritan.dev/config"
+	"tritan.dev/database"
 )
 
 func CheckStatus(ctx *fiber.Ctx) error {
-	email := ctx.Params("email")
+	id := ctx.Params("id")
 	user_auth := ctx.Query("token")
 	config := ctx.Locals("config").(*config.AppConfig)
 
 	auth_keys := config.Authkeys
 	isAuth := false
-	for _, item := range auth_keys { 
+	for _, item := range auth_keys {
 		if item == user_auth {
 			isAuth = true
 			break
@@ -27,10 +28,18 @@ func CheckStatus(ctx *fiber.Ctx) error {
 			"message": "You are not authenticated.",
 		})
 	} else {
-		// do stuff
-		return ctx.JSON(fiber.Map{
-			"uwu?":  "uwu indeed",
-			"email": email,
-		})
+
+		db := database.New("./database/users.json")
+		user := db.Get(id)
+
+		if user == nil {
+			return ctx.JSON(fiber.Map{
+				"error":   true,
+				"code":    404,
+				"message": "ID provided not found.",
+			})
+		}
+
+		return ctx.JSON(user)
 	}
 }

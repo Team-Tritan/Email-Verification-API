@@ -11,7 +11,7 @@ func BuildAPI(app *fiber.App) error {
 
 	api := app.Group("/api")
 	api.All("/verify/:email", controllers.VerifyEmail)
-	api.All("/check/:email", controllers.CheckStatus)
+	api.All("/check/:id", controllers.CheckStatus)
 
 	api.Get("/status", func(ctx *fiber.Ctx) error {
 		return ctx.JSON(fiber.Map{
