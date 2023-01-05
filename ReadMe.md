@@ -12,7 +12,7 @@ A very **very** basic email verif microservice made for a friend's project. The 
 
 #### Send Verification Request
 
-- GET /api/verify/[email]?token=[api key]
+- GET /api/send/[email]?token=[api key]
 
 #### Get Verification Status
 

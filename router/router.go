@@ -10,7 +10,7 @@ func BuildAPI(app *fiber.App) error {
 	app.Get("/", controllers.ServeRoot)
 
 	api := app.Group("/api")
-	api.All("/verify/:email", controllers.VerifyEmail)
+	api.All("/send/:email", controllers.VerifyEmail)
 	api.All("/check/:id", controllers.CheckStatus)
 
 	api.Get("/status", func(ctx *fiber.Ctx) error {

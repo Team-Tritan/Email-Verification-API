@@ -2,7 +2,6 @@ package database
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 )
@@ -31,7 +30,6 @@ func (db *Database) Set(key string, value interface{}) {
 }
 
 func (db *Database) Get(key string) interface{} {
-	fmt.Println(db.data)
 	return db.data[key]
 
 }
