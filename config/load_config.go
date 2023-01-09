@@ -10,6 +10,7 @@ import (
 
 type AppConfig struct {
 	Authkeys []string `yaml:"auth_keys"`
+	Baseurl   string `yaml:"base_url"`
 
 	Mail struct {
 		FromAddress string `yaml:"from_address"`

@@ -32,10 +32,10 @@ func VerifyEmail(ctx *fiber.Ctx) error {
 			"message": "You are not authenticated.",
 		})
 	} else {
-		go mail.SendMail(email, ctx)
-
 		date := time.Now()
 		userkey := uuid.New().String()
+
+		go mail.SendMail(email, userkey, ctx)
 
 		db := database.New("./database/users.json")
 		db.Set(userkey, map[string]interface{}{

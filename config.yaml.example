@@ -8,3 +8,4 @@ mail:
   password: AAAAAAAAAAAAAAAAAA
   port: 465
   tls: false
+base_url: https://aaaaaaaa.succ.com
