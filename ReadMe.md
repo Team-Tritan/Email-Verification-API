@@ -16,7 +16,7 @@ A very **very** basic email verif microservice made for a friend's project. The 
 
 #### Get Verification Status
 
-- GET /api/check/[id]?token=[auth token]
+- GET /api/check/[request id]?token=[api key]
 
 #### Get API Status
 
