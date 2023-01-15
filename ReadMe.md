@@ -12,11 +12,15 @@ A very **very** basic email verif microservice made for a friend's project. The 
 
 #### Send Verification Request
 
-- GET /api/send/[email]?token=[api key]
+- GET /api/send/[email address]?token=[api key]
 
 #### Get Verification Status
 
-- GET /api/check/[request id]?token=[api key]
+- GET /api/check/[verif token]?token=[api key]
+
+#### Verify Email Route (sent as link in email)
+
+- GET /api/verify/[verif token]
 
 #### Get API Status
 
