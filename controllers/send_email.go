@@ -11,7 +11,7 @@ import (
 	"tritan.dev/mail"
 )
 
-func VerifyEmail(ctx *fiber.Ctx) error {
+func SendEmail(ctx *fiber.Ctx) error {
 	email := ctx.Params("email")
 	user_auth := ctx.Query("token")
 	config := ctx.Locals("config").(*config.AppConfig)

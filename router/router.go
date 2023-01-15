@@ -10,8 +10,9 @@ func BuildAPI(app *fiber.App) error {
 	app.Get("/", controllers.ServeRoot)
 
 	api := app.Group("/api")
-	api.All("/send/:email", controllers.VerifyEmail)
+	api.All("/send/:email", controllers.SendEmail)
 	api.All("/check/:id", controllers.CheckStatus)
+	api.All("/verify/:id", controllers.VerifyEmail)
 
 	api.Get("/status", func(ctx *fiber.Ctx) error {
 		return ctx.JSON(fiber.Map{
