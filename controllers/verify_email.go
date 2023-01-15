@@ -16,10 +16,10 @@ type User struct {
 }
 
 func VerifyEmail(ctx *fiber.Ctx) error {
-	id := ctx.Params("id")
+	user_token := ctx.Params("id")
 	db := database.New("./database/users.json")
 
-	user := db.Get(id)
+	user := db.Get(user_token)
 	fmt.Print(user)
 
 	if user == nil {
@@ -36,16 +36,16 @@ func VerifyEmail(ctx *fiber.Ctx) error {
 	// user.Datesent = user_exists["date_sent"]
 	// user.Verifcode = user_exists["verif_code"]
 
-	db.Set(id, map[string]interface{}{
+	db.Set(user_token, map[string]interface{}{
 		//"email": user_exists["Email"],
 		//"date_sent":  user.Datesent,
 		"verified":   true,
-		"verif_code": id,
+		"verif_code": user_token,
 	})
 
 	db.Save("./database/users.json")
 
-	finalRecord := db.Get(id)
+	finalRecord := db.Get(user_token)
 
 	return ctx.JSON(finalRecord)
 }

@@ -13,13 +13,13 @@ import (
 
 func SendEmail(ctx *fiber.Ctx) error {
 	email := ctx.Params("email")
-	user_auth := ctx.Query("token")
+	api_key := ctx.Query("token")
 	config := ctx.Locals("config").(*config.AppConfig)
 
 	auth_keys := config.Authkeys
 	isAuth := false
 	for _, item := range auth_keys {
-		if item == user_auth {
+		if item == api_key {
 			isAuth = true
 			break
 		}
