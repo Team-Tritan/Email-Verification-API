@@ -8,7 +8,7 @@ import (
 )
 
 func CheckStatus(ctx *fiber.Ctx) error {
-	id := ctx.Params("id")
+	user_token := ctx.Params("id")
 	api_key := ctx.Query("token")
 	config := ctx.Locals("config").(*config.AppConfig)
 
@@ -30,7 +30,7 @@ func CheckStatus(ctx *fiber.Ctx) error {
 	} else {
 
 		db := database.New("./database/users.json")
-		user := db.Get(id)
+		user := db.Get(user_token)
 
 		if user == nil {
 			return ctx.JSON(fiber.Map{

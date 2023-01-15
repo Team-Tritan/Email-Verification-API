@@ -33,16 +33,16 @@ func SendEmail(ctx *fiber.Ctx) error {
 		})
 	} else {
 		date := time.Now()
-		userkey := uuid.New().String()
+		user_token := uuid.New().String()
 
-		go mail.SendMail(email, userkey, ctx)
+		go mail.SendMail(email, user_token, ctx)
 
 		db := database.New("./database/users.json")
-		db.Set(userkey, map[string]interface{}{
+		db.Set(user_token, map[string]interface{}{
 			"email":      email,
 			"verified":   false,
 			"date_sent":  date.String(),
-			"verif_code": userkey,
+			"verif_code": user_token,
 		})
 		db.Save("./database/users.json")
 
@@ -50,7 +50,7 @@ func SendEmail(ctx *fiber.Ctx) error {
 			"status":  200,
 			"message": "Verification email sent successfully.",
 			"email":   email,
-			"id":      userkey,
+			"id":      user_token,
 		})
 	}
 }
